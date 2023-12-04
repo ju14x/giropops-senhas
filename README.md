@@ -7,11 +7,18 @@ docker run -d --name redis-stack-server -p 6379:6379 redis/redis-stack-server:la
 ```
 
 ```sh
-# skippable: the image is already on dockerhub. only put here for notes to remember how I did it
-docker build --build-arg REDIS_HOST=172.17.0.2 -t jlxdocky/linuxtips-giropops-senhas:1.0 .
+# optional: the image is already on dockerhub. only put here for notes
+docker build -t jlxdocky/linuxtips-giropops-senhas:1.0 .
+```
+
+- check your default network to find the redis container IPv4Address:
+
+```sh
+# usually 172.17.0.2, could be 172.17.0.3 if you have more than one/two containers running
+docker network inspect bridge
 ```
 
 ```sh
-docker run -d -p 5000:5000 --name giropops-senhas jlxdocky/linuxtips-giropops-senhas:1.0
+docker run -d -p 5000:5000 -e REDIS_HOST="your-redis-ip-here" --name giropops-senhas jlxdocky/linuxtips-giropops-senhas:1.0
 ```
 
