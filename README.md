@@ -1,6 +1,6 @@
 ## giropops-senhas
 
-to run locally with Dockerfiles only (v1.0):
+- to run locally with Dockerfiles only (v1.0):
 
 ```sh
 docker run -d --name redis-stack-server -p 6379:6379 redis/redis-stack-server:latest
