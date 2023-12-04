@@ -7,6 +7,7 @@ docker run -d --name redis-stack-server -p 6379:6379 redis/redis-stack-server:la
 ```
 
 ```sh
+# skippable: the image is already on dockerhub. only put here for notes to remember how I did it
 docker build --build-arg REDIS_HOST=172.17.0.2 -t jlxdocky/linuxtips-giropops-senhas:1.0 .
 ```
 
