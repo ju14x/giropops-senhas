@@ -19,6 +19,6 @@ docker network inspect bridge
 ```
 
 ```sh
-docker run -d -p 5000:5000 -e REDIS_HOST="your-redis-ip-here" --name giropops-senhas jlxdocky/linuxtips-giropops-senhas:1.0
+docker run -d -p 5000:5000 -e REDIS_HOST="your-redis-ip-here" --name giropops-senhas jlxdocky/linuxtips-giropops-senhas:2.0
 ```
 
