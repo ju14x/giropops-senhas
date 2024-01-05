@@ -1,9 +1,14 @@
-FROM python:3.12-slim
+FROM cgr.dev/chainguard/python:latest-dev as builder
 WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt --user
+
+FROM cgr.dev/chainguard/python:latest
+WORKDIR /app
+COPY --from=builder /home/nonroot/.local/lib/python3.12/site-packages /home/nonroot/.local/lib/python3.12/site-packages
 COPY . .
-RUN pip install --no-cache-dir -r requirements.txt
 ENV REDIS_HOST=localhost
-ENV APP_VERSION=1.0.0
+ENV APP_VERSION=2.0.0
 EXPOSE 5000
-CMD [ "flask", "run", "--host=0.0.0.0" ]
+ENTRYPOINT [ "python", "-m", "flask", "run", "--host=0.0.0.0" ]
 
